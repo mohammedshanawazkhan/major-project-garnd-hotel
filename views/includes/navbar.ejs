@@ -1,0 +1,63 @@
+<nav class="N-navbar">
+      <ul id="nav">
+        
+        <li><a href="/rooms">ALL ROOMS</a></li>
+         <%if(user && user.id==='6adb5d506c3050e6fcbb3bef'){ %>
+        <li><a href="/rooms/newpass">ADD NEW ROOM</a></li>
+        <%}%>
+        <input type="text" placeholder=" Search" id="searbar">
+        
+        <ul id="bar">
+       <% if(!user){ %>
+ <li><a href="/signup">signup</a></li>
+        <li><a href="/login">login</a></li>
+       <%}%>
+         <% if(user){ %>
+            <li><a href="/logout">logout</a></li>
+         <%}%>
+    </ul>
+    </ul>
+    
+    
+</nav>
+<nav class="N-navbar-2">
+<div class="icon">
+  <i class="fa-solid fa-bed"></i>
+  <p>Rooms</p>
+
+      
+</div>
+<div class="icon">
+<i class="fa-solid fa-location-dot"></i>
+      <p>Location</p> 
+</div>
+<div class="icon">
+<i class="fa-solid fa-user"></i>
+      <p>User</p> 
+</div>
+<div class="icon">
+<i class="fa-brands fa-facebook"></i>      <p>Facebook</p> 
+</div>
+<div class="icon">
+<i class="fa-brands fa-youtube"></i>      <p>Youtube</p> 
+</div>
+<div class="icon">
+<i class="fa-brands fa-google"></i>      <p>Google</p> 
+</div>
+<div class="icon">
+<i class="fa-brands fa-amazon"></i>      <p>Amazon</p> 
+</div>
+<div class="icon">
+<i class="fa-brands fa-instagram"></i>      <p>Instagram</p> 
+</div>
+<div class="icon">
+<i class="fa-brands fa-github"></i>      <p>Github</p> 
+</div>
+<div class="icon">
+<i class="fa-solid fa-globe"></i>      <p>Globle</p> 
+</div>
+
+
+    
+    
+</nav>
