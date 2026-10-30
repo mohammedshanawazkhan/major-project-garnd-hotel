@@ -1,53 +1,195 @@
 <% layout("/layouts/boilerplate") %>
 <body>
-    <div class="form">
-    <form action="/rooms/new" method="post"novalidate class="needs-validation"  enctype="multipart/form-data">
-        <label for="text">Room Number</label>
-        <br>
-        <input type="text" name="roomNumber" placeholder="enter room number" id="text" required>
-        
-        <br>
-        <br>
-        <label for="text">Type</label>
-        <br>
-        <input type="text" name="type" placeholder="enter the type" id="text" required>
-        <div class="invalid-feedback">invalid-feedback</div>
-        <br>
-        <br>
-        <label for="text">Floor</label>
-        <br>
-        <input type="number" name="floor" placeholder="enter the floor" id="text" required>
-        
-        <br>
-        <br>
-        <label for="text">Price-Per-Night</label>
-        <br>
-        <input type="text" name="pricePerNight" placeholder="enter the price" id="text" required>
-       
-        <br>
-        <br>
-        <label for="text">Status</label>
-        <br>
-        <input type="text" name="status" placeholder="enter the status" id="text" required>
-        
-        <br>
-        <br>
-        <label for="text">Capacity</label>
-        <br>
-        <input type="number" name="capacity" placeholder="enter the capacity" id="text" required>
-        
-        <br>
-        <br>
-        <label for="file">Link</label>
-        <br>
-        <input type="file" name="image" placeholder="enter the link" id="file" required>
-       
-        <br>
-        <br>
-        <button class="btn">
-            submit
-        </button>
+       body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+    }
+    .form-container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h2, h3 {
+      color: #333;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 5px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: 600;
+      color: #444;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+    input:focus, textarea:focus {
+      border-color: #0078d7;
+      outline: none;
+    }
+    .section {
+      margin-bottom: 25px;
+    }
+    .skills input {
+      margin-bottom: 8px;
+    }
+    button {
+      background: #0078d7;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Resume Form</h2>
+    <form action="/resume/newform" method="POST" enctype="multipart/form-data">
+      
+      <!-- Template ID -->
+      <div class="section">
+        <label for="templateId">Template ID:</label>
+        <input type="text" id="templateId" name="templateId">
+      </div>
+
+      <!-- Images -->
+      <div class="section">
+        <label for="resumeImage">Resume Image URL:</label>
+        <input type="file" id="resumeImage" name="resumeImage" required>
+
+        <label for="profileImage">Profile Image URL:</label>
+        <input type="file" id="profileImage" name="profileImage" required>
+      </div>
+
+      <!-- Basic Info -->
+      <div class="section">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="linkedin">LinkedIn:</label>
+        <input type="url" id="linkedin" name="linkedin">
+
+        <label for="github">GitHub:</label>
+        <input type="url" id="github" name="github">
+      </div>
+
+      <!-- Summary -->
+      <div class="section">
+        <label for="summary">Summary:</label>
+        <textarea id="summary" name="summary" rows="4" required></textarea>
+      </div>
+
+      <!-- Education -->
+      <div class="section">
+        <h3>Education</h3>
+        <label for="degree">Degree:</label>
+        <input type="text" id="degree" name="education[0][degree]">
+
+        <label for="institution">Institution:</label>
+        <input type="text" id="institution" name="education[0][institution]">
+
+        <label for="year">Year:</label>
+        <input type="text" id="year" name="education[0][year]">
+
+        <label for="specialization">Specialization:</label>
+        <input type="text" id="specialization" name="education[0][specialization]">
+      </div>
+
+      <!-- Skills -->
+      <div class="section skills">
+        <h3>Skills</h3>
+        <input type="text" name="skills[]" placeholder="Skill 1">
+        <input type="text" name="skills[]" placeholder="Skill 2">
+        <input type="text" name="skills[]" placeholder="Skill 3">
+      </div>
+
+      <!-- Experience -->
+      <div class="section">
+        <h3>Experience</h3>
+        <label for="title">Job Title:</label>
+        <input type="text" id="title" name="experience[0][title]">
+
+        <label for="company">Company:</label>
+        <input type="text" id="company" name="experience[0][company]">
+
+        <label for="startDate">Start Date:</label>
+        <input type="text" id="startDate" name="experience[0][startDate]">
+
+        <label for="endDate">End Date:</label>
+        <input type="text" id="endDate" name="experience[0][endDate]">
+
+        <label for="responsibilities">Responsibilities:</label>
+        <textarea id="responsibilities" name="experience[0][responsibilities]" rows="3"></textarea>
+      </div>
+
+      <!-- Project -->
+      <div class="section">
+        <h3>Project</h3>
+        <label for="projectTitle">Project Title:</label>
+        <input type="text" id="projectTitle" name="projectTitle">
+
+        <label for="projectDescription">Project Description:</label>
+        <textarea id="projectDescription" name="projectDescription" rows="3"></textarea>
+
+        <label for="projectTech">Technologies:</label>
+        <input type="text" id="projectTech" name="projectTech">
+
+        <label for="projectLink">Project Link:</label>
+        <input type="url" id="projectLink" name="projectLink">
+      </div>
+
+      <!-- Hobbies -->
+      <div class="section">
+        <h3>Hobbies</h3>
+        <input type="text" name="hobby1" placeholder="Hobby 1">
+        <input type="text" name="hobby2" placeholder="Hobby 2">
+        <input type="text" name="hobby3" placeholder="Hobby 3">
+      </div>
+
+      <!-- References -->
+      <div class="section">
+        <h3>Reference</h3>
+        <label for="refName1">Name:</label>
+        <input type="text" id="refName1" name="refName1">
+
+        <label for="refContact1">Contact:</label>
+        <input type="text" id="refContact1" name="refContact1">
+
+        <label for="refRelation1">Relation:</label>
+        <input type="text" id="refRelation1" name="refRelation1">
+      </div>
+
+      <!-- Submit -->
+      <button type="submit">Submit Resume</button>
     </form>
-    </div>
+  </div>
+</body>
+</html>
     
 </body>
