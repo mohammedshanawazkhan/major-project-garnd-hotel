@@ -113,7 +113,7 @@ router.post("/new",validateter,upload.single('image'),wrapAsync(async(req,res)=>
         image:image
     })
     console.log(dataNew)
-    dataNew.owner=req.user_id;
+    dataNew.owner=req.user._id;
     dataNew.image={url,filename}
     await dataNew.save();
     req.flash("success","New listing created")
