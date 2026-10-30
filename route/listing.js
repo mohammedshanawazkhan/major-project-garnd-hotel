@@ -75,6 +75,12 @@ router.get("/new",islogin,(req,res)=>{
 router.get("/newpass",(req,res)=>{
     res.render("newpass.ejs")
 })
+router.get("/privacy",(req,res)=>{
+    res.render("privacy.ejs")
+})
+router.get("/terms",(req,res)=>{
+    res.render("terms.ejs")
+})
 router.get("/:id",async(req,res)=>{
     let {id}=req.params;
     const Data= await listing.findById(id).populate({path:"reviews",populate:{path:"author"}}).populate("owner");
@@ -84,12 +90,7 @@ router.get("/:id",async(req,res)=>{
 
 
 
-router.get("/privacy",(req,res)=>{
-    res.render("privacy.ejs")
-})
-router.get("/terms",(req,res)=>{
-    res.render("terms.ejs")
-})
+
 
 router.post("/new",validateter,upload.single('image'),wrapAsync(async(req,res)=>{
     let url=req.file.path
