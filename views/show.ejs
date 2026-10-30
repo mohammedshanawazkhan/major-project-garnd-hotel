@@ -24,7 +24,7 @@
   <br>
   <b>ROOM NUMBER</b>:<h3 id="h3"><%=Data.roomNumber%></h3>
   </div>
-<% if(user && Data.owner && user._id.equals(Data.owner._id)){%>
+<% if(user && Data.owner && req.user._id.equals(Data.owner._id)){%>
 
   <form action="/rooms/<%=Data._id%>/editpass" method="get"  novalidate class="needs-validation">
        <button class="btn">EDIT</button>
