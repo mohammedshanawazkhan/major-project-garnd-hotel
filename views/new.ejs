@@ -1,196 +1,259 @@
 <% layout("/layouts/boilerplate") %>
 
 
+
 <style>
 
 
 
-.form-container{
-    max-width:900px;
+.room-form-container{
+    width:100%;
+    max-width:1300px;
     margin:auto;
     background:#fff;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 4px 12px rgba(0,0,0,.1);
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
 }
 
-h2{
-    color:#333;
-    border-bottom:2px solid #eee;
-    padding-bottom:10px;
-    margin-bottom:25px;
+.room-title{
+    color:#222;
+    font-size:32px;
+    margin-bottom:10px;
 }
 
-.section{
-    margin-bottom:25px;
+.room-subtitle{
+    color:#666;
+    margin-bottom:30px;
 }
 
-.form-grid{
+.room-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
 }
 
-label{
-    display:block;
-    margin-bottom:6px;
+.room-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.room-label{
     font-weight:600;
+    margin-bottom:8px;
     color:#444;
 }
 
-input,
-select{
+.room-input,
+.room-select{
     width:100%;
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:6px;
+    height:50px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    padding:0 15px;
     font-size:15px;
     transition:.3s;
 }
 
-input:focus,
-select:focus{
+.room-input:focus,
+.room-select:focus{
     outline:none;
     border-color:#0078d7;
-    box-shadow:0 0 5px rgba(0,120,215,.2);
+    box-shadow:0 0 0 3px rgba(0,120,215,.15);
 }
 
-.upload-box{
+.room-upload-section{
+    margin-top:30px;
+}
+
+.room-upload-box{
     border:2px dashed #d1d5db;
-    border-radius:8px;
-    padding:30px;
+    border-radius:10px;
+    padding:35px;
     text-align:center;
     background:#fafafa;
+    transition:.3s;
 }
 
-.upload-box:hover{
+.room-upload-box:hover{
     border-color:#0078d7;
 }
 
-.btn{
-    background:#0078d7;
-    color:white;
-    border:none;
-    padding:12px 25px;
-    border-radius:6px;
-    font-size:16px;
-    cursor:pointer;
-    transition:.3s;
-width:100%
+.room-file{
+    width:100%;
 }
 
-.btn:hover{
+.room-btn{
+    width:100%;
+    margin-top:30px;
+    background:#0078d7;
+    color:#fff;
+    border:none;
+    height:55px;
+    border-radius:8px;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.room-btn:hover{
     background:#005fa3;
 }
 
-@media(max-width:768px){
+/* Tablet */
 
-    .form-grid{
-        grid-template-columns:1fr;
+@media(max-width:992px){
+
+    .room-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .btn{
-        width:100%;
+    .room-form-container{
+        padding:30px;
     }
 
 }
 
-</style>
+/* Mobile */
 
+@media(max-width:768px){
+
+    body{
+        padding:15px;
+    }
+
+    .room-form-container{
+        padding:20px;
+    }
+
+    .room-grid{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .room-title{
+        font-size:24px;
+    }
+
+    .room-btn{
+        height:50px;
+    }
+}
+
+</style>
+</head>
 
 <body>
 
-<div class="form-container">
+<div class="room-form-container">
 
-    <h2>Add New Room</h2>
+    <h2 class="room-title">Add New Room</h2>
+    <p class="room-subtitle">Create and manage hotel room inventory</p>
 
     <form action="/rooms/new" method="post" enctype="multipart/form-data">
 
-        <div class="section">
+        <div class="room-grid">
 
-            <div class="form-grid">
-
-                <div>
-                    <label>Room Number</label>
-                    <input
-                        type="text"
-                        name="roomNumber"
-                        placeholder="Enter room number"
-                        required>
-                </div>
-
-                <div>
-                    <label>Room Type</label>
-                    <select name="type" required>
-                        <option value="">Select Type</option>
-                        <option>Standard</option>
-                        <option>Deluxe</option>
-                        <option>Executive</option>
-                        <option>Suite</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label>Floor</label>
-                    <input
-                        type="number"
-                        name="floor"
-                        placeholder="Enter floor"
-                        required>
-                </div>
-
-                <div>
-                    <label>Capacity</label>
-                    <input
-                        type="number"
-                        name="capacity"
-                        placeholder="Guests Capacity"
-                        required>
-                </div>
-
-                <div>
-                    <label>Price Per Night</label>
-                    <input
-                        type="number"
-                        name="pricePerNight"
-                        placeholder="₹5000"
-                        required>
-                </div>
-
-                <div>
-                    <label>Status</label>
-                    <select name="status" required>
-                        <option>Available</option>
-                        <option>Booked</option>
-                        <option>Maintenance</option>
-                    </select>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="section">
-
-            <label>Room Image</label>
-
-            <div class="upload-box">
+            <div class="room-group">
+                <label class="room-label">Room Number</label>
                 <input
-                    type="file"
-                    name="image"
+                    class="room-input"
+                    type="text"
+                    name="roomNumber"
+                    placeholder="Enter room number"
                     required>
             </div>
 
+            <div class="room-group">
+                <label class="room-label">Room Type</label>
+                <select
+                    class="room-select"
+                    name="type"
+                    required>
+
+                    <option value="">Select Type</option>
+                    <option>Standard</option>
+                    <option>Deluxe</option>
+                    <option>Executive</option>
+                    <option>Suite</option>
+
+                </select>
+            </div>
+
+            <div class="room-group">
+                <label class="room-label">Floor</label>
+                <input
+                    class="room-input"
+                    type="number"
+                    name="floor"
+                    placeholder="Enter floor"
+                    required>
+            </div>
+
+            <div class="room-group">
+                <label class="room-label">Capacity</label>
+                <input
+                    class="room-input"
+                    type="number"
+                    name="capacity"
+                    placeholder="Guest capacity"
+                    required>
+            </div>
+
+            <div class="room-group">
+                <label class="room-label">Price Per Night</label>
+                <input
+                    class="room-input"
+                    type="number"
+                    name="pricePerNight"
+                    placeholder="5000"
+                    required>
+            </div>
+
+            <div class="room-group">
+                <label class="room-label">Status</label>
+                <select
+                    class="room-select"
+                    name="status"
+                    required>
+
+                    <option>Available</option>
+                    <option>Booked</option>
+                    <option>Maintenance</option>
+
+                </select>
+            </div>
+
         </div>
 
-        <button type="submit" class="btn">
+        <div class="room-upload-section">
+
+            <label class="room-label">Room Image</label>
+
+            <div class="room-upload-box">
+
+                <input
+                    class="room-file"
+                    type="file"
+                    name="image"
+                    required>
+
+            </div>
+
+        </div>
+
+        <button
+            type="submit"
+            class="room-btn">
+
             Create Room
+
         </button>
 
     </form>
 
 </div>
 
-
-    
 </body>
+
