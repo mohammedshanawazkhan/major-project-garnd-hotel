@@ -1,37 +1,275 @@
 
 
 <% layout("/layouts/boilerplate") %>
+
+
+<style>
+
+
+
+.room-form-container{
+    width:100%;
+    max-width:1200px;
+    margin:auto;
+    background:#fff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.room-title{
+    font-size:32px;
+    color:#222;
+    margin-bottom:10px;
+}
+
+.room-subtitle{
+    color:#666;
+    margin-bottom:30px;
+}
+
+.room-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.room-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.room-label{
+    font-weight:600;
+    margin-bottom:8px;
+    color:#444;
+}
+
+.room-input,
+.room-select{
+    width:100%;
+    height:50px;
+    padding:0 15px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    font-size:15px;
+    transition:.3s;
+}
+
+.room-input:focus,
+.room-select:focus{
+    outline:none;
+    border-color:#0078d7;
+    box-shadow:0 0 0 3px rgba(0,120,215,.15);
+}
+
+.room-upload-section{
+    margin-top:30px;
+}
+
+.room-upload-box{
+    max-width:350px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:15px;
+    background:#fafafa;
+}
+
+.room-current-image{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:8px;
+    border:1px solid #ddd;
+    margin-bottom:10px;
+}
+
+.room-file{
+    width:100%;
+}
+
+.room-btn{
+    width:100%;
+    height:55px;
+    margin-top:30px;
+    background:#0078d7;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.room-btn:hover{
+    background:#005fa3;
+}
+
+/* Tablet */
+
+@media(max-width:992px){
+
+    .room-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    body{
+        padding:15px;
+    }
+
+    .room-form-container{
+        padding:20px;
+    }
+
+    .room-grid{
+        grid-template-columns:1fr;
+    }
+
+    .room-title{
+        font-size:25px;
+    }
+
+    .room-upload-box{
+        max-width:100%;
+    }
+}
+
+</style>
+</head>
+
 <body>
-   <div class="form">
-    <form action="/rooms/<%=data._id%>?_method=put" method="post"  novalidate class="needs-validation">
-        <input type="text" name="roomNumber" value="<%=data.roomNumber%>" id="text" required>
-        <div class="invalid-feedback">invalid</div>
-        <br>
-        <br>
-        <input type="text" name="type" value="<%=data.type%>" id="text" required>
-        <br>
-        <br>
-        <input type="text" name="floor" value="<%=data.floor%>" id="text" required>
-        <br>
-        <br>
-        <input type="text" name="pricePerNight" value="<%=data.pricePerNight%>" id="text" required>
-        <br>
-        <br>
-        <input type="text" name="status" value="<%=data.status%>" id="text" required>
-        <br>
-        <br>
-        <input type="text" name="capacity" value="<%=data.capacity%>" id="text" required>
-        <br>
-        <br>
-        <div >
-            <img src="<%=data.image.url%>" alt="" style="height: 100px; width: 100px;"">
+
+<div class="room-form-container">
+
+    <h2 class="room-title">Edit Room</h2>
+    <p class="room-subtitle">Update room details and image</p>
+
+    <form
+        action="/rooms/<%= data._id %>?_method=PUT"
+        method="POST"
+        enctype="multipart/form-data"
+        novalidate
+        class="needs-validation">
+
+        <div class="room-grid">
+
+            <div class="room-group">
+                <label class="room-label">Room Number</label>
+                <input
+                    class="room-input"
+                    type="text"
+                    name="roomNumber"
+                    value="<%= data.roomNumber %>"
+                    required>
+            </div>
+
+            <div class="room-group">
+                <label class="room-label">Room Type</label>
+                <input
+                    class="room-input"
+                    type="text"
+                    name="type"
+                    value="<%= data.type %>"
+                    required>
+            </div>
+
+            <div class="room-group">
+                <label class="room-label">Floor</label>
+                <input
+                    class="room-input"
+                    type="number"
+                    name="floor"
+                    value="<%= data.floor %>"
+                    required>
+            </div>
+
+            <div class="room-group">
+                <label class="room-label">Price Per Night</label>
+                <input
+                    class="room-input"
+                    type="number"
+                    name="pricePerNight"
+                    value="<%= data.pricePerNight %>"
+                    required>
+            </div>
+
+            <div class="room-group">
+                <label class="room-label">Status</label>
+
+                <select
+                    class="room-select"
+                    name="status">
+
+                    <option value="Available"
+                    <%= data.status==="Available" ? "selected" : "" %>>
+                    Available
+                    </option>
+
+                    <option value="Booked"
+                    <%= data.status==="Booked" ? "selected" : "" %>>
+                    Booked
+                    </option>
+
+                    <option value="Maintenance"
+                    <%= data.status==="Maintenance" ? "selected" : "" %>>
+                    Maintenance
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="room-group">
+                <label class="room-label">Capacity</label>
+                <input
+                    class="room-input"
+                    type="number"
+                    name="capacity"
+                    value="<%= data.capacity %>"
+                    required>
+            </div>
+
         </div>
-        <input type="file" name="image" value="<%=data.image%>" id="text" required>
-        <br>
-        <br>
-        <button class="btn">
-            submit
+
+        <div class="room-upload-section">
+
+            <label class="room-label">
+                Current Room Image
+            </label>
+
+            <div class="room-upload-box">
+
+                <img
+                    src="<%= data.image.url %>"
+                    alt="Room Image"
+                    class="room-current-image">
+
+                <input
+                    type="file"
+                    name="image"
+                    class="room-file">
+
+            </div>
+
+        </div>
+
+        <button
+            type="submit"
+            class="room-btn">
+
+            Update Room
+
         </button>
+
     </form>
-    </div>
+
+</div>
+
 </body>
