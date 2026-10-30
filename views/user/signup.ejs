@@ -1,31 +1,170 @@
 <% layout("/layouts/boilerplate") %>
 
 
-<div class="content">
-    <div class="data1">
-        <h1>SIGN-UP TO Grand-Hotel</h1>
-        <form action="/signup" method="post">
-            <label for="text">Username</label>
-            <br>
-            <input type="text" id="text" name="username" required>
-            <br>
-            <br>
-            <label for="text">Emial</label>
-            <br>
-            <input type="email" id="text" name="email" required>
-            <br>
-            <br>
-            <label for="text">Password</label>
-            <br>
-            <input type="password" id="text" name="password" required>
-            <br>
-            <br>
-              <a href="/auth/google"><div class="log">Google <i class="fa-brands fa-google"></i></div></a>
-              <br>
-              <br>
-                        <a href="/auth/github"><div class="log">Github <i class="fa-brands fa-google"></i></div></a>
-                 <br><br>
-            <button class="btn-2">signup</button>
-        </form>
+<style>
+
+
+
+
+form{
+    width:700px;
+    max-width:90%;
+    background:white;
+    padding:30px;
+    margin:60px auto;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:25px;
+    color:#333;
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:15px;
+}
+
+.signup-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    background:#28a745;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.signup-btn:hover{
+    background:#218838;
+}
+
+.or{
+    text-align:center;
+    margin:20px 0;
+    color:#666;
+    font-weight:bold;
+}
+
+.social-btn{
+    display:block;
+    width:100%;
+    text-align:center;
+    text-decoration:none;
+    color:white;
+    padding:12px;
+    border-radius:6px;
+    margin-top:10px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+/* Google */
+.google{
+    background:red;
+}
+
+.google:hover{
+    background:red;
+}
+
+/* GitHub */
+.github{
+    background:#24292E;
+}
+
+.github:hover{
+    background:#000;
+}
+
+/* Facebook */
+.facebook{
+    background:#1877F2;
+}
+
+.facebook:hover{
+    background:#0D65D9;
+}
+
+.login-link{
+    text-align:center;
+    margin-top:20px;
+}
+
+.login-link a{
+    text-decoration:none;
+    color:#4285F4;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<form action="/signup" method="POST">
+
+    <h1>Create Account</h1>
+
+    
+
+    <div class="form-group">
+        <label>Username</label>
+        <input type="text" name="username" required>
     </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="password" required>
+    </div>
+
+    <button type="submit" class="signup-btn">
+        Sign Up
+    </button>
+
+    <p class="or">OR SIGN UP WITH</p>
+
+    <a href="/auth/google" class="social-btn google">
+        Continue with Google
+    </a>
+
+    <a href="/auth/github" class="social-btn github">
+        Continue with GitHub
+    </a>
+
+    <a href="/auth/facebook" class="social-btn facebook">
+        Continue with Facebook
+    </a>
+
+    <div class="login-link">
+        Already have an account?
+        <a href="/login">Login</a>
+    </div>
+
+</form>
+
+
+
+
 </div>
+</body>
