@@ -63,29 +63,7 @@ body{
    width: 100%;
 }
 
-.container{
-  
-   width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    
-}
-.box{
-    width: 1rem;
-    height: 1rem;
-     border: 3px solid black;
-    border-radius: 1.5rem;
-    padding: 0.75rem;
-    margin: 0.5rem;
-    background-color: gray;
-}
-.box-img{
-    height: 100%;
-    width: 100%;
-    border-radius: 1.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-}
+
 
 
 
@@ -99,36 +77,9 @@ body{
     margin-right: 15px;
     margin-top: 2px;
 }
-.box{
-    height: 20rem;
-    width: 20rem;
-    border: 3px solid black;
-    border-radius: 1.5rem;
-    padding: 0.75rem;
-    margin: 0.5rem;
-    background-color: gray;
-}
-.box:hover{
-    box-shadow: 0 0 40px black;
-}
-.box-img{
-    width: 96%;
-    height: 80%;
-   border-radius: 1.5rem;
-    border: 2px solid black;
-}
-.box-img a img{
-    height: 100%;
-    width: 100%;
-    border-radius: 1.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-}
 
-.container{
-    display: flex;
-    flex-wrap: wrap;
-    
-}
+
+
 #h3{
     margin-top: 10px;
     display: inline;
@@ -439,3 +390,83 @@ body{
     color: #222222;
    
  }
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.box{
+    width: calc(25% - 1rem);
+    min-width: 250px;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.box:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+}
+
+.box-img{
+    width: 100%;
+    height: 220px;
+}
+
+.box-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#h3{
+    text-align: center;
+    margin: 0.5rem 0;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Tablet */
+@media (max-width: 768px){
+
+    .container{
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .box{
+        width: calc(50% - 0.5rem);
+        min-width: 0;
+    }
+
+    .box-img{
+        height: 140px;
+    }
+
+    #h3{
+        font-size: 0.9rem;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px){
+
+    .box{
+        width: calc(50% - 0.5rem);
+    }
+
+    .box-img{
+        height: 120px;
+    }
+
+    #h3{
+        font-size: 0.8rem;
+    }
+}
