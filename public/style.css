@@ -461,15 +461,17 @@ body{
 /* Small Mobile */
 @media (max-width: 480px){
 
+  @media (max-width: 480px){
+
+    @media (max-width: 480px){
+
     .box{
         width: calc(50% - 0.5rem);
+        min-height: 250px;
     }
 
     .box-img{
-        height: 120px;
+        height: 170px;
     }
-
-    #h3{
-        font-size: 0.8rem;
-    }
+}
 }
