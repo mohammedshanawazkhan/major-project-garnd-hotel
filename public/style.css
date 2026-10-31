@@ -88,7 +88,7 @@ body{
 
 .box-s{
     height: 52rem;
-    width: 35rem;
+    width: 25rem;
     border: 3px solid black;
     border-radius: 1.5rem;
     margin: auto;
@@ -203,7 +203,7 @@ body{
     
 }
 .data{
-    width: 100%;
+    width: 80%;
 }
 .review{
     margin-top: 3rem;
