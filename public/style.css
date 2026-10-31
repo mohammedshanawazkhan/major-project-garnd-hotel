@@ -394,16 +394,17 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
-    padding: 1rem;
+   
 }
 
 .box{
     width: calc(25% - 1rem);
-    min-width: 250px;
-    border-radius: 1rem;
+    min-width: 20rem;
+    border-radius: 1.5rem;
     overflow: hidden;
-    background: #fff;
+    background: gray;
+    padding: 0.75rem;
+    margin: 0.5rem;
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     transition: all 0.3s ease;
 }
@@ -414,15 +415,17 @@ body{
 }
 
 .box-img{
-    width: 100%;
-    height: 220px;
+    width: 96%;
+    height: 80%;
+    border-radius: 1.5rem;
+    border: 2px solid black;
 }
 
-.box-img img{
+.box-img a img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    display: block;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
 #h3{
