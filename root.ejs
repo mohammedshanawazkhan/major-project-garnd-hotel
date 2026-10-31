@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Grand Hotel</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.55)),
+    url("https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1400&q=80");
+
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    flex-direction:column;
+}
+
+/* NAVBAR */
+
+.navbar{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.2rem 7%;
+}
+
+.logo{
+    color:#fff;
+    font-size:2rem;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:#FFD700;
+}
+
+.nav-btns{
+    display:flex;
+    gap:1rem;
+}
+
+.nav-btn{
+    text-decoration:none;
+    color:white;
+    padding:10px 22px;
+    border-radius:50px;
+    border:1px solid rgba(255,255,255,.4);
+    transition:.3s;
+}
+
+.nav-btn:hover{
+    background:white;
+    color:black;
+}
+
+/* HERO */
+
+.hero{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:2rem;
+}
+
+.hero-box{
+    max-width:900px;
+}
+
+.hero-box h1{
+    font-size:4rem;
+    color:white;
+    margin-bottom:20px;
+    line-height:1.2;
+}
+
+.hero-box p{
+    color:#f1f1f1;
+    font-size:1.1rem;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+/* BUTTONS */
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    text-decoration:none;
+    padding:15px 35px;
+    border-radius:50px;
+    font-weight:600;
+    transition:.35s;
+}
+
+.signup{
+    background:#FFD700;
+    color:black;
+}
+
+.login{
+    background:white;
+    color:black;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 30px rgba(255,255,255,.3);
+}
+
+/* FEATURES */
+
+.features{
+    width:100%;
+    padding:0 7% 50px;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(15px);
+    padding:30px;
+    border-radius:22px;
+    color:white;
+    text-align:center;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    background:rgba(255,255,255,.18);
+}
+
+.card h3{
+    margin-bottom:10px;
+    font-size:1.3rem;
+}
+
+.card p{
+    color:#e7e7e7;
+    font-size:.95rem;
+}
+
+/* TABLET */
+
+@media(max-width:900px){
+
+    .hero-box h1{
+        font-size:3rem;
+    }
+
+    .feature-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .logo{
+        font-size:1.7rem;
+    }
+
+    .hero{
+        padding:1.5rem;
+    }
+
+    .hero-box h1{
+        font-size:2.2rem;
+    }
+
+    .hero-box p{
+        font-size:.95rem;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .btn{
+        width:250px;
+        text-align:center;
+    }
+
+    .feature-grid{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        padding:25px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🏨 <span>Grand Hotel</span>
+    </div>
+
+    <div class="nav-btns">
+        <a href="/login" class="nav-btn">Login</a>
+        <a href="/signup" class="nav-btn">Sign Up</a>
+    </div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-box">
+
+        <h1>
+            Experience Luxury,
+            Comfort & Elegance
+        </h1>
+
+        <p>
+            Discover premium hotel rooms, world-class dining,
+            relaxing spa services and unforgettable experiences.
+            Join Grand Hotel today and begin your luxury stay.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/signup" class="btn signup">
+                Create Account
+            </a>
+
+            <a href="/login" class="btn login">
+                Login
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features">
+
+    <div class="feature-grid">
+
+        <div class="card">
+            <h3>⭐ Luxury Rooms</h3>
+            <p>
+                Spacious premium suites with modern interiors
+                and breathtaking views.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🏊 Pool & Spa</h3>
+            <p>
+                Rejuvenate yourself with luxurious spa
+                treatments and swimming facilities.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🍽 Fine Dining</h3>
+            <p>
+                Enjoy delicious cuisine prepared by our
+                experienced chefs.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>
