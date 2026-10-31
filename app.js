@@ -194,7 +194,7 @@ app.listen(8080,()=>{
     console.log(process.env.GOOGLE_SECRET)
 })
 app.get("/",(req,res)=>{
-    res.send("the root")
+    res.render("root.ejs")
 })
 // app.get("/rooms",async(req,res)=>{
 //     let allData=await listing.find({});
